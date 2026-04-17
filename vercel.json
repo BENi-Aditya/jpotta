@@ -13,3 +13,4 @@
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
+
