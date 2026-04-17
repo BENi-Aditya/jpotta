@@ -3,11 +3,6 @@
   "buildCommand": "pnpm --filter @workspace/jpotta run build",
   "outputDirectory": "artifacts/jpotta/dist",
   "framework": null,
-  "functions": {
-    "api/**/*.ts": {
-      "runtime": "nodejs20.x"
-    }
-  },
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
