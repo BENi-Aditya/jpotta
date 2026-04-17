@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "JPOTTA - Olympia Table Tennis Academy"
+version = "1.0.0"
+id = "artifacts/jpotta"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 3000
+
+[services.development]
+run = "pnpm --filter @workspace/jpotta run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/jpotta", "run", "build" ]
+publicDir = "artifacts/jpotta/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "3000"
+BASE_PATH = "/"

@@ -1,0 +1,182 @@
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { MapPin, Phone, Clock, Trophy, Target, Users, Zap, Menu, X, ArrowUp } from 'lucide-react';
+import AboutPage from './pages/About'; // Ensure this file exists in src/pages/
+import './index.css';
+
+// Main Landing Page Component
+const LandingPage = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showTopBtn, setShowTopBtn] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowTopBtn(window.scrollY > 300);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const programs = [
+    { title: "Basic Level", desc: "Master the basics of the sport.", icon: <Target size={32} /> },
+    { title: "Intermediate Level", desc: "Improve ball control.", icon: <Zap size={32} /> },
+    { title: "Advanced Level", desc: "Strategic and competitive play.", icon: <Trophy size={32} /> },
+    { title: "Personal Training", desc: "1-on-1 coaching.", icon: <Users size={32} /> },
+  ];
+
+  const facilities = [
+    "International Tables",
+    "Robot Practice",
+    "Synthetic Flooring",
+    "Air-Conditioned Arena",
+    "24 Hours Access",
+    "ITTF Approved Equipment"
+  ];
+
+  return (
+    <div className="app-container">
+      {/* NAVBAR */}
+      <nav className="navbar">
+        <div className="nav-content">
+          <div className="logo">
+            <h1>JPOTTA</h1>
+          </div>
+          <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+            <a href="#home" onClick={toggleMenu}>Home</a>
+            <a href="#about" onClick={toggleMenu}>About</a>
+            <a href="#programs" onClick={toggleMenu}>Programs</a>
+            <a href="#facilities" onClick={toggleMenu}>Facilities</a>
+            <a href="#contact" onClick={toggleMenu}>Contact</a>
+          </div>
+          <button className="mobile-menu-btn" onClick={toggleMenu}>
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* HERO */}
+      <section id="home" className="hero">
+        <div className="hero-content">
+          <div className="live-badge fade-down">
+            <span className="live-dot"></span>
+            Open Now!
+          </div>
+          <h1 className="hero-title glow-text">JP Olympia Table Tennis Academy</h1>
+          <p className="hero-subtitle">Carving Champions in Mumbai Since 2018</p>
+          <div className="hero-btns">
+            <a href="#contact" className="cta-button pulse-anim">Book a Session</a>
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="section about">
+        <div className="section-header">
+          <h2>About The Academy</h2>
+          <div className="divider glow-divider"></div>
+        </div>
+        <div className="about-content">
+          <p>JPOTTA was established in 2018 to train aspiring players.</p>
+          <p>We focus on state to international level excellence.</p>
+          <div className="about-action">
+            <Link to="/about" className="ripple-btn">
+              <span>Know More</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* PROGRAMS */}
+      <section id="programs" className="section programs bg-light">
+        <div className="section-header">
+          <h2>Our Training Plans</h2>
+          <div className="divider glow-divider"></div>
+        </div>
+        <div className="programs-grid">
+          {programs.map((prog, index) => (
+            <div key={index} className="program-card fade-up hover-glow">
+              <div className="program-icon floating">{prog.icon}</div>
+              <h3>{prog.title}</h3>
+              <p>{prog.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FACILITIES */}
+      <section id="facilities" className="section facilities">
+        <div className="section-header">
+          <h2>Premium Facilities</h2>
+          <div className="divider glow-divider"></div>
+        </div>
+        <div className="facilities-grid">
+          <div className="facilities-image-placeholder hover-glow">
+            Experience Professional Table Tennis
+          </div>
+          <div className="facilities-list">
+            <ul>
+              {facilities.map((item, index) => (
+                <li key={index} className="fade-up sliding-item" style={{animationDelay: `${index * 0.1}s`}}>
+                  <Zap className="list-icon" size={20} />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="section contact bg-light">
+        <div className="section-header">
+          <h2>Visit Us</h2>
+          <div className="divider glow-divider"></div>
+        </div>
+        <div className="contact-grid">
+          <div className="contact-card hover-glow">
+            <MapPin className="contact-icon" size={32} />
+            <h3>Location</h3>
+            <p>Andheri East, Mumbai</p>
+          </div>
+          <div className="contact-card hover-glow">
+            <Phone className="contact-icon" size={32} />
+            <h3>Call</h3>
+            <p>+91 79779 62892</p>
+          </div>
+          <div className="contact-card hover-glow">
+            <Clock className="contact-icon" size={32} />
+            <h3>Hours</h3>
+            <p>24 Hours</p>
+          </div>
+        </div>
+      </section>
+
+      <button className={`back-to-top ${showTopBtn ? 'show' : ''}`} onClick={scrollToTop}>
+        <ArrowUp size={20} />
+      </button>
+
+      <footer className="footer">
+        <p>© {new Date().getFullYear()} JPOTTA</p>
+      </footer>
+    </div>
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/about" element={<AboutPage />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;

@@ -1,0 +1,1005 @@
+openapi: 3.1.0
+info:
+  title: Api
+  version: 0.1.0
+  description: JPOTTA API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: reviews
+    description: Review operations
+  - name: news
+    description: News operations
+  - name: achievements
+    description: Achievement operations
+  - name: players
+    description: Player operations
+  - name: committee
+    description: Committee member operations
+  - name: admin
+    description: Admin authentication
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  # ── Admin Auth ────────────────────────────────────────────────────────────
+  /admin/login:
+    post:
+      operationId: adminLogin
+      tags: [admin]
+      summary: Admin login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdminLoginBody"
+      responses:
+        "200":
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminLoginResponse"
+        "401":
+          description: Invalid credentials
+
+  /admin/logout:
+    post:
+      operationId: adminLogout
+      tags: [admin]
+      summary: Admin logout
+      responses:
+        "200":
+          description: Logged out
+
+  /admin/me:
+    get:
+      operationId: adminMe
+      tags: [admin]
+      summary: Get current admin session
+      responses:
+        "200":
+          description: Session info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminSession"
+        "401":
+          description: Not authenticated
+
+  # ── Reviews ────────────────────────────────────────────────────────────
+  /reviews:
+    get:
+      operationId: listReviews
+      tags: [reviews]
+      summary: List all reviews
+      responses:
+        "200":
+          description: List of reviews
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+    post:
+      operationId: createReview
+      tags: [reviews]
+      summary: Create a review (admin)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateReviewBody"
+      responses:
+        "201":
+          description: Created review
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+
+  /reviews/{id}:
+    patch:
+      operationId: updateReview
+      tags: [reviews]
+      summary: Update a review (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateReviewBody"
+      responses:
+        "200":
+          description: Updated review
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+    delete:
+      operationId: deleteReview
+      tags: [reviews]
+      summary: Delete a review (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  # ── News ────────────────────────────────────────────────────────────
+  /news:
+    get:
+      operationId: listNews
+      tags: [news]
+      summary: List all news articles
+      responses:
+        "200":
+          description: List of news articles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/NewsArticle"
+    post:
+      operationId: createNewsArticle
+      tags: [news]
+      summary: Create news article (admin)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateNewsArticleBody"
+      responses:
+        "201":
+          description: Created news article
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NewsArticle"
+
+  /news/{id}:
+    get:
+      operationId: getNewsArticle
+      tags: [news]
+      summary: Get a news article
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: News article
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NewsArticle"
+        "404":
+          description: Not found
+    patch:
+      operationId: updateNewsArticle
+      tags: [news]
+      summary: Update news article (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateNewsArticleBody"
+      responses:
+        "200":
+          description: Updated news article
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NewsArticle"
+    delete:
+      operationId: deleteNewsArticle
+      tags: [news]
+      summary: Delete news article (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  # ── Achievements ────────────────────────────────────────────────────────────
+  /achievements:
+    get:
+      operationId: listAchievements
+      tags: [achievements]
+      summary: List all achievements
+      parameters:
+        - name: year
+          in: query
+          required: false
+          schema:
+            type: ["integer", "null"]
+      responses:
+        "200":
+          description: List of achievements
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Achievement"
+    post:
+      operationId: createAchievement
+      tags: [achievements]
+      summary: Create achievement (admin)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateAchievementBody"
+      responses:
+        "201":
+          description: Created achievement
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Achievement"
+
+  /achievements/{id}:
+    get:
+      operationId: getAchievement
+      tags: [achievements]
+      summary: Get achievement with details
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Achievement
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AchievementDetail"
+        "404":
+          description: Not found
+    patch:
+      operationId: updateAchievement
+      tags: [achievements]
+      summary: Update achievement (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateAchievementBody"
+      responses:
+        "200":
+          description: Updated achievement
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Achievement"
+    delete:
+      operationId: deleteAchievement
+      tags: [achievements]
+      summary: Delete achievement (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  /achievements/{id}/players:
+    post:
+      operationId: tagPlayerInAchievement
+      tags: [achievements]
+      summary: Tag a player in an achievement (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TagPlayerBody"
+      responses:
+        "200":
+          description: Tagged
+    delete:
+      operationId: untagPlayerFromAchievement
+      tags: [achievements]
+      summary: Remove player tag from achievement (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TagPlayerBody"
+      responses:
+        "204":
+          description: Removed
+
+  /achievements/years:
+    get:
+      operationId: listAchievementYears
+      tags: [achievements]
+      summary: List distinct years with achievements
+      responses:
+        "200":
+          description: Years list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: integer
+
+  # ── Players ────────────────────────────────────────────────────────────
+  /players:
+    get:
+      operationId: listPlayers
+      tags: [players]
+      summary: List all players
+      parameters:
+        - name: search
+          in: query
+          required: false
+          schema:
+            type: ["string", "null"]
+      responses:
+        "200":
+          description: List of players
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Player"
+    post:
+      operationId: createPlayer
+      tags: [players]
+      summary: Create player (admin)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePlayerBody"
+      responses:
+        "201":
+          description: Created player
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Player"
+
+  /players/{id}:
+    get:
+      operationId: getPlayer
+      tags: [players]
+      summary: Get player with stats and achievements history
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Player detail
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PlayerDetail"
+        "404":
+          description: Not found
+    patch:
+      operationId: updatePlayer
+      tags: [players]
+      summary: Update player (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdatePlayerBody"
+      responses:
+        "200":
+          description: Updated player
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Player"
+    delete:
+      operationId: deletePlayer
+      tags: [players]
+      summary: Delete player (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  # ── Committee Members ────────────────────────────────────────────────────────────
+  /committee:
+    get:
+      operationId: listCommitteeMembers
+      tags: [committee]
+      summary: List all committee members
+      responses:
+        "200":
+          description: List of committee members
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CommitteeMember"
+    post:
+      operationId: createCommitteeMember
+      tags: [committee]
+      summary: Create committee member (admin)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCommitteeMemberBody"
+      responses:
+        "201":
+          description: Created committee member
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommitteeMember"
+
+  /committee/{id}:
+    patch:
+      operationId: updateCommitteeMember
+      tags: [committee]
+      summary: Update committee member (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateCommitteeMemberBody"
+      responses:
+        "200":
+          description: Updated committee member
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommitteeMember"
+    delete:
+      operationId: deleteCommitteeMember
+      tags: [committee]
+      summary: Delete committee member (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+
+    AdminLoginBody:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      required:
+        - username
+        - password
+
+    AdminLoginResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+      required:
+        - success
+        - message
+
+    AdminSession:
+      type: object
+      properties:
+        authenticated:
+          type: boolean
+        username:
+          type: ["string", "null"]
+      required:
+        - authenticated
+
+    Review:
+      type: object
+      properties:
+        id:
+          type: integer
+        authorName:
+          type: string
+        authorTitle:
+          type: ["string", "null"]
+        content:
+          type: string
+        rating:
+          type: integer
+        photoUrl:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+      required:
+        - id
+        - authorName
+        - content
+        - rating
+        - createdAt
+
+    CreateReviewBody:
+      type: object
+      properties:
+        authorName:
+          type: string
+        authorTitle:
+          type: ["string", "null"]
+        content:
+          type: string
+        rating:
+          type: integer
+        photoUrl:
+          type: ["string", "null"]
+      required:
+        - authorName
+        - content
+        - rating
+
+    UpdateReviewBody:
+      type: object
+      properties:
+        authorName:
+          type: ["string", "null"]
+        authorTitle:
+          type: ["string", "null"]
+        content:
+          type: ["string", "null"]
+        rating:
+          type: ["integer", "null"]
+        photoUrl:
+          type: ["string", "null"]
+
+    NewsArticle:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        summary:
+          type: string
+        content:
+          type: string
+        imageUrl:
+          type: ["string", "null"]
+        publishedAt:
+          type: string
+        createdAt:
+          type: string
+      required:
+        - id
+        - title
+        - summary
+        - content
+        - publishedAt
+        - createdAt
+
+    CreateNewsArticleBody:
+      type: object
+      properties:
+        title:
+          type: string
+        summary:
+          type: string
+        content:
+          type: string
+        imageUrl:
+          type: ["string", "null"]
+        publishedAt:
+          type: string
+      required:
+        - title
+        - summary
+        - content
+        - publishedAt
+
+    UpdateNewsArticleBody:
+      type: object
+      properties:
+        title:
+          type: ["string", "null"]
+        summary:
+          type: ["string", "null"]
+        content:
+          type: ["string", "null"]
+        imageUrl:
+          type: ["string", "null"]
+        publishedAt:
+          type: ["string", "null"]
+
+    Achievement:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        shortDescription:
+          type: string
+        longDescription:
+          type: string
+        year:
+          type: integer
+        mainImageUrl:
+          type: ["string", "null"]
+        additionalImages:
+          type: array
+          items:
+            type: string
+        taggedPlayerIds:
+          type: array
+          items:
+            type: integer
+        createdAt:
+          type: string
+      required:
+        - id
+        - title
+        - shortDescription
+        - longDescription
+        - year
+        - additionalImages
+        - taggedPlayerIds
+        - createdAt
+
+    AchievementDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        shortDescription:
+          type: string
+        longDescription:
+          type: string
+        year:
+          type: integer
+        mainImageUrl:
+          type: ["string", "null"]
+        additionalImages:
+          type: array
+          items:
+            type: string
+        taggedPlayers:
+          type: array
+          items:
+            $ref: "#/components/schemas/Player"
+        createdAt:
+          type: string
+      required:
+        - id
+        - title
+        - shortDescription
+        - longDescription
+        - year
+        - additionalImages
+        - taggedPlayers
+        - createdAt
+
+    CreateAchievementBody:
+      type: object
+      properties:
+        title:
+          type: string
+        shortDescription:
+          type: string
+        longDescription:
+          type: string
+        year:
+          type: integer
+        mainImageUrl:
+          type: ["string", "null"]
+        additionalImages:
+          type: array
+          items:
+            type: string
+        taggedPlayerIds:
+          type: array
+          items:
+            type: integer
+      required:
+        - title
+        - shortDescription
+        - longDescription
+        - year
+
+    UpdateAchievementBody:
+      type: object
+      properties:
+        title:
+          type: ["string", "null"]
+        shortDescription:
+          type: ["string", "null"]
+        longDescription:
+          type: ["string", "null"]
+        year:
+          type: ["integer", "null"]
+        mainImageUrl:
+          type: ["string", "null"]
+        additionalImages:
+          type: array
+          items:
+            type: string
+        taggedPlayerIds:
+          type: array
+          items:
+            type: integer
+
+    TagPlayerBody:
+      type: object
+      properties:
+        playerId:
+          type: integer
+      required:
+        - playerId
+
+    Player:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        photoUrl:
+          type: ["string", "null"]
+        district:
+          type: ["string", "null"]
+        highestRank:
+          type: ["string", "null"]
+        blade:
+          type: ["string", "null"]
+        bhRubber:
+          type: ["string", "null"]
+        fhRubber:
+          type: ["string", "null"]
+        displayOrder:
+          type: integer
+        createdAt:
+          type: string
+      required:
+        - id
+        - name
+        - displayOrder
+        - createdAt
+
+    PlayerDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        photoUrl:
+          type: ["string", "null"]
+        district:
+          type: ["string", "null"]
+        highestRank:
+          type: ["string", "null"]
+        blade:
+          type: ["string", "null"]
+        bhRubber:
+          type: ["string", "null"]
+        fhRubber:
+          type: ["string", "null"]
+        displayOrder:
+          type: integer
+        achievements:
+          type: array
+          items:
+            $ref: "#/components/schemas/Achievement"
+        createdAt:
+          type: string
+      required:
+        - id
+        - name
+        - displayOrder
+        - achievements
+        - createdAt
+
+    CreatePlayerBody:
+      type: object
+      properties:
+        name:
+          type: string
+        photoUrl:
+          type: ["string", "null"]
+        district:
+          type: ["string", "null"]
+        highestRank:
+          type: ["string", "null"]
+        blade:
+          type: ["string", "null"]
+        bhRubber:
+          type: ["string", "null"]
+        fhRubber:
+          type: ["string", "null"]
+        displayOrder:
+          type: integer
+      required:
+        - name
+
+    UpdatePlayerBody:
+      type: object
+      properties:
+        name:
+          type: ["string", "null"]
+        photoUrl:
+          type: ["string", "null"]
+        district:
+          type: ["string", "null"]
+        highestRank:
+          type: ["string", "null"]
+        blade:
+          type: ["string", "null"]
+        bhRubber:
+          type: ["string", "null"]
+        fhRubber:
+          type: ["string", "null"]
+        displayOrder:
+          type: ["integer", "null"]
+
+    CommitteeMember:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        role:
+          type: string
+        photoUrl:
+          type: ["string", "null"]
+        bio:
+          type: ["string", "null"]
+        displayOrder:
+          type: integer
+        createdAt:
+          type: string
+      required:
+        - id
+        - name
+        - role
+        - displayOrder
+        - createdAt
+
+    CreateCommitteeMemberBody:
+      type: object
+      properties:
+        name:
+          type: string
+        role:
+          type: string
+        photoUrl:
+          type: ["string", "null"]
+        bio:
+          type: ["string", "null"]
+        displayOrder:
+          type: integer
+      required:
+        - name
+        - role
+
+    UpdateCommitteeMemberBody:
+      type: object
+      properties:
+        name:
+          type: ["string", "null"]
+        role:
+          type: ["string", "null"]
+        photoUrl:
+          type: ["string", "null"]
+        bio:
+          type: ["string", "null"]
+        displayOrder:
+          type: ["integer", "null"]

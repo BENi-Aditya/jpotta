@@ -1,0 +1,183 @@
+—— FIXES ——  1) The home page the address, ph number, location should be changed… socials like yt, facebook, insta, linkedin should be added. fix the favicon to be the logo of the website….
+
+Address - 
+Shop No. 1 -  MTNL Compound Sanabil Banquet, 139A, 
+Marol Maroshi Rd, opp. Marol Fire Brigade, Marol Naka, 
+Marol, Andheri East, 
+Mumbai, Maharashtra - 400059 
+
+Phone Number -  +91 7045702200 (For Admission)
++91 7978834542 (Head Coach)
+
+Email Id - 
+jpotta2018@gmail.com
+
+Youtube link - 
+https://www.youtube.com/@jpolympiatabletennisacadem44
+Instagram link -  https://www.instagram.com/tabletennis_jpotta/
+Facebook link - 
+https://www.facebook.com/Jpotta28/
+Whatsapp link -  https://wa.me/917045702200
+Linkedin link - 
+https://www.linkedin.com/company/jpotta-mumbai
+(Add the above in the footer where it is currently placed)
+  2) The news page, the read full article should work, like when we click on it, it should pop up like a mini window where the image slides to the left and the detailed description to the right… and a cross button to close…  3) remove the “know more” button under about in the nav bar and make the functionality directly work when we click on About… also beside the logo, add a header JPOTTA. also where its written “elite sports institution” add a small (active) dot animated style.. also in the title of the website, make the title more spliced and appealing… in the description, (below the tagline) reduce the font the font of the tagline as well as the description by a little bit… in the description add -  Carrying forward the legacy of Dronacharya Awaree, Shri Jayanta Pushilal Sir. Disciple, National Coach Arjun Patra carries forward his route to becoming a champion. the part where “Dronacharya Awaree, Shri Jayanta Pushilal Sir” is written, make it bolder and in red glow…  4) in the reviews, when new reviews are added in from the admin portal, make it auto scrolling horizontally so that all the reviews that are added, are visible when its auto scrolling…  5) in the admin page login… add a back to site button to go back to the home page on the admin login page…  6) in smaller screens, when we are viewing the player cards, when we click on it and it grows into a pop up, its perfect for bigger screens like pc, but for smaller screens, the texts of the ranks and district says still so the image is not resized for smaller screen and it remains big only, difficult to read the text as it goes behind the player photo…
+
+7 ) Just like in player cards, when we click it, it pops up and enlarges itself, do that same way for Board of Directors…
+
+8 ) add terms of service, privacy policy, and whatever is mentioned below (in the footer)
+
+Terms and Conditions -  JP Olympia Table Tennis Academy - Terms and Conditions
+1. Introduction Welcome to JP Olympia Table Tennis Academy. By enrolling in our academy, you agree to abide by the following terms and conditions. These terms ensure the safety, professionalism, and smooth operation of our programs.
+2. Enrollment & Fees
+* Enrollment is open to players of all skill levels and ages, subject to available slots.
+* All fees must be paid in advance on a monthly or quarterly basis as per the selected package.
+* Fees are non-refundable except in cases of academy-approved special circumstances.
+* The academy reserves the right to adjust fees with prior notice.
+3. Code of Conduct
+* All students must respect coaches, staff, and fellow players at all times.
+* Any form of misconduct, including harassment or bullying, will result in disciplinary action, including possible expulsion.
+* Proper sports attire, including non-marking shoes, is mandatory during training sessions.
+* Players must follow the instructions of the coaches and adhere to safety guidelines.
+4. Training Sessions & Attendance
+* Students are expected to attend sessions punctually.
+* Absence due to medical or personal reasons must be communicated in advance.
+* Missed sessions will not be compensated unless approved under exceptional circumstances.
+5. Health & Safety
+* All participants must declare any pre-existing medical conditions before enrollment.
+* The academy is not responsible for injuries sustained during training; however, first aid will be provided if needed.
+* Students are encouraged to have personal accident insurance.
+6. Equipment & Facility Usage
+* Academy equipment must be handled with care. Any damages caused due to negligence will be chargeable.
+* Players must maintain cleanliness and discipline within the premises.
+7. Competitions & External Events
+* Participation in tournaments will be subject to the coach’s approval.
+* Players represent JP Olympia Table Tennis Academy and must exhibit sportsmanship at all events.
+* The academy is not liable for any external event-related costs unless explicitly stated.
+8. Photography & Media
+* The academy may capture photographs or videos during sessions for promotional purposes.
+* If a participant does not wish to be included, a written request must be submitted in advance.
+9. Cancellation & Termination
+* The academy reserves the right to cancel classes due to unforeseen circumstances, with make-up sessions scheduled when possible.
+* Any violation of academy rules may result in suspension or termination of membership.
+* Parents/guardians must notify the academy in writing if a student intends to withdraw from the program.
+10. Amendments to Terms & Conditions
+* JP Olympia Table Tennis Academy reserves the right to modify these terms at any time.
+* Updates will be communicated through official academy channels.
+By enrolling in JP Olympia Table Tennis Academy, you acknowledge that you have read, understood, and agreed to abide by these Terms and Conditions.
+For any queries, please contact our administration team.
+Thank you,
+Regards,
+Team JPOTTA
+
+Privacy Policy - 
+JP Olympia Table Tennis Academy - Privacy Policy
+1. Introduction JP Olympia Table Tennis Academy is committed to protecting the privacy of our students, parents, and staff. This Privacy Policy outlines how we collect, use, and safeguard personal information.
+2. Information We Collect
+* Personal details such as name, age, contact number, email, and address.
+* Emergency contact information.
+* Medical information relevant to participation in training.
+* Payment details for fee transactions.
+* Photos and videos captured during academy activities (with consent).
+3. How We Use Your Information
+* To process enrollments and maintain student records.
+* To communicate important updates, schedules, and academy-related information.
+* For emergency contact purposes.
+* To process payments and issue invoices.
+* To promote academy activities through photos and videos (only with consent).
+4. Data Protection & Security
+* We take reasonable measures to protect personal information from unauthorized access.
+* Personal data is only accessible to authorized personnel for legitimate purposes.
+* We do not sell, rent, or share personal information with third parties without consent.
+5. Third-Party Services
+* Payment processing may be handled through secure third-party providers.
+* External tournaments and events may require sharing limited information for registration.
+6. Data Retention
+* Personal data is retained only for as long as necessary for academy operations.
+* Upon withdrawal from the academy, personal records are securely archived or deleted, except where legally required.
+7. Your Rights
+* You have the right to access, update, or request deletion of your personal information.
+* Requests can be made by contacting the academy administration.
+8. Changes to This Policy
+* We may update this Privacy Policy as necessary.
+* Any changes will be communicated through official channels.
+By enrolling at JP Olympia Table Tennis Academy, you acknowledge and agree to this Privacy Policy. If you have any concerns, please contact us for further clarification.
+
+Cancellation & Refund Policy - 
+JP Olympia Table Tennis Academy - Refund and Cancellation Policy
+
+
+1. General Policy
+At JP Olympia Table Tennis Academy, we strive to provide the best training experience to all our students. We understand that sometimes plans change, and we have outlined our refund and cancellation policies below to ensure transparency and fairness.
+
+2. Cancellation & Refund Policy for Coaching Programs
+
+
+A. Monthly & Term-Based Coaching Fees
+1. Cancellation Before the Session Starts:
+    * If a student cancels their enrollment before the session begins, a 90% refund will be provided. The remaining 10% will be deducted as an administrative fee.
+2. Cancellation After the Session Begins:
+    * If a student cancels within the first 7 days of the session, a 50% refund will be provided.
+    * No refunds will be issued after 7 days from the start of the session.
+3. Missed Classes:
+    * There are no refunds or carry-forward options for missed classes due to personal reasons.
+    * If the academy cancels a class due to unforeseen circumstances, a make-up session will be scheduled.
+B.  Private Coaching & One-on-One Sessions
+1. Cancellations made at least 24 hours before the scheduled session will receive a full credit to reschedule the session.
+2. Cancellations made within 24 hours of the scheduled session will result in a 50% deduction of the session fee.
+3. No-shows without prior notice will not be eligible for a refund or rescheduling.
+
+
+
+4. Tournament & Event Fees
+1. Entry Fees for Competitions and Tournaments are non-refundable unless the event is canceled by the academy or the governing body.
+2. If a player is unable to participate due to injury or illness, a refund may be considered upon submission of medical proof.
+
+
+
+5. Equipment & Merchandise Refund Policy
+1. Defective or Damaged Products:
+    * Any table tennis equipment or merchandise purchased from the academy can be returned for a full refund or exchange within 7 days of purchase, provided the item is unused and in its original packaging.
+2. Non-Refundable Items:
+    * Used or damaged items due to personal misuse will not be eligible for a refund.
+    * Custom-made or personalized equipment cannot be returned unless defective.
+
+
+
+6. Academy-Initiated Cancellations
+1. In the rare case that JP Olympia Table Tennis Academy cancels a program or session due to insufficient enrollment, facility unavailability, or other operational reasons, students will receive:
+    * A full refund OR
+    * The option to transfer their fee to a future session.
+
+
+
+7. Refund Processing Time
+* All approved refunds will be processed within 7-10 business days from the date of request.
+* Refunds will be credited to the original payment method used during registration.
+
+
+
+8. Policy Amendments
+JP Olympia Table Tennis Academy reserves the right to modify this refund and cancellation policy at any time. Changes will be communicated via our official website and email notifications.
+
+For any refund or cancellation requests, please contact us at: 📧 [ jpotta2018@gmail.com ] 📞 [ +91 70457 02200 ]
+
+Shipping and Delivery - 
+JP Olympia Table Tennis Academy - Shipping and Delivery
+
+
+1. For any products bought from JP Olympia Table Tennis Academy - 
+* We will deliver the products to you within the same date if available or else will contact you for the availability of product delivery.
+* Products shipped ALL OVER INDIA and delivery date depends on the courier partner.
+
+JP Olympia Table Tennis Academy reserves the right to modify this refund and cancellation policy at any time. Changes will be communicated via our official website and email notifications.
+
+For any more information, please contact us at: 📧 [ jpotta2018@gmail.com ] 📞 [ +91 70457 02200 ]
+
+ 9 ) edit the centres… (in the footer)
+JPOTTA, Marol (Main Centre)
+Kalpataru Society, Ghatkopar West (Only for society members)
+Bombay Scottish School, Powai (Only for BSS students)
+Jolly Gymkhana, Ghatkopar West (Specific Hours of Coaching only) SEBI Bhavan, BKC (Only for SEBI Employees)
+  10) add a light/dark theme toggle button   11) when we click contact from the nav bar, it should redirect to the home page and to the contact section… 
+also when we click home and contact, add a smooth scrolling effect to the page since both are on the same page. it looks jittery…
